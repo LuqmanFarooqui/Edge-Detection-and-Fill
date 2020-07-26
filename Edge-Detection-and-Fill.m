@@ -1,0 +1,10 @@
+srcfile = dir('C:\Users\Luqman\My MATLAB Codes\*.jpeg');
+filename = strcat('C:\Users\Luqman\My MATLAB Codes\', srcfile(0).name);
+I = imread(filename);
+Igray = rgb2gray(I);
+Ibin = imbinarize(Igray);
+Iedge1 = edge (Ibin, 'Roberts');
+Iedge2 = bwmorph(Iedge1, 'thicken');
+figure, imshow(Iedge2, 'Colormap', [1 1 1; 0 0 1]);
+Ifill = activecontour(Ibin, Igray, 1);
+figure, imshow(Ifill, 'Colormap', [1 0 1; 0 1 1]);
